@@ -1,0 +1,27 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: urob
+      url-base: https://github.com/urob
+    - name: badjeff
+      url-base: https://github.com/badjeff
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: edf5c0814fd3ea202e43aad2d68fd32e882a518c # v0.3.0
+      import: app/west.yml
+    - name: zmk-adaptive-key
+      remote: urob
+      revision: 924784d95dcffe8492ecaf99f47d0b2eeb2e242e # main
+    - name: zmk-leader-key
+      remote: urob
+      revision: 1f8c36830eb5901eebca4988bc1255b89fa3cc45 # main
+    - name: zmk-auto-layer
+      remote: urob
+      revision: cf52cce16cf798b116b380fc13dfd36b3a998de6 # main
+    - name: zmk-behavior-battery-percentage-printer
+      remote: badjeff
+      revision: e111cbc6ac66caaa157daeb58eda3c8e2b43153a # main
+  self:
+    path: config
