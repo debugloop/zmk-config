@@ -30,3 +30,9 @@ jobs:
         with:
           workflow: ci.yml
           ref: refs/heads/update_flake_lock_action
+
+      - name: Set auto merge
+        run: gh pr merge --auto --rebase --delete-branch ${{ steps.update-flake-lock.outputs.pull-request-number }}
+        if: ${{ steps.update-flake-lock.outputs.pull-request-head-sha }}
+        env:
+          GH_TOKEN: ${{ github.token }}
