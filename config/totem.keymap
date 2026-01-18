@@ -34,6 +34,7 @@
 #define H2 LCTRL
 #define H3 LSHFT
 #define H4 LALT
+#define H5 RALT
 #define HRML(k1, k2, k3, k4) &hl H4 k1  &hl H3 k2  &hl H2 k3 &hl H1 k4
 #define HRMR(k1, k2, k3, k4) &hr H1 k1  &hr H2 k2  &hr H3 k3 &hr H4 k4
 
@@ -202,11 +203,11 @@
         //           │    A     │    R     │    S     │    T     │    G     │   │    M     │    N     │    E     │    I     │    O     │
                      HRML(A,         R,         S,         T)     &kp G          &kp M     HRMR(N,         E,         I,         O)
         //┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐
-        //│   ESC    │    Z     │    X     │    C     │    D     │    V     │   │    K     │    H     │   , ;    │   . ?    │    /     │  RETURN  │
-           &kp ESC    &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &comma     &dot       &kp SLASH  &kp RET
+        //│    Q     │    Z     │    X     │    C     │    D     │    V     │   │    K     │    H     │   , ;    │   . ?    │    /     │   MIC    │
+           &hl H5 Q   &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &comma     &dot       &kp SLASH  &hr H5 F20
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
-        //                                 │ RALT/TAB │ NUM/ESC  │SYM/SPACE │   │NAV/ENTER │  SHIFT   │BACKSPACE │
-                                         &mt RALT TAB &lt NUM ESC &lts SYM 0    &lt NAV RET &skq LSHFT &kp BSPC
+        //                                 │  REPEAT  │ NUM/ESC  │SYM/SPACE │   │NAV/ENTER │  SHIFT   │BACKSPACE │
+                                           &key_repeat &lt NUM ESC &lts SYM 0    &lt NAV RET &skq LSHFT &kp BSPC
         //                                 └──────────┴──────────┴──────────┘   └──────────┴──────────┴──────────┘
             >;
         };
@@ -234,14 +235,14 @@
             display-name = "NUM";
             bindings = <
         //           ┌──────────┬──────────┬──────────┬──────────┬──────────┐   ┌──────────┬──────────┬──────────┬──────────┬──────────┐
-        //           │    F1    │    F2    │    F3    │    F4    │    F5    │   │    F6    │    F7    │    F8    │    F9    │    F0    │
-                      &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &kp F6     &kp F7     &kp F8     &kp F9     &kp F10
+        //           │    1     │    2     │    3     │    4     │    5     │   │    6     │    7     │    8     │    9     │          │
+                      &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9         ___
         //           ├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //           │    1     │    2     │    3     │    4     │    5     │   │    6     │    7     │    8     │    9     │    0     │
-                      &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0
+        //           │    F1    │    F2    │    F3    │    F4    │    F5    │   │    F6    │    4     │    5     │    6     │     0    │
+                      &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &kp F6     &kp N4     &kp N5     &kp N6     &kp N0
         //┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐
-        //│    F11   │          │          │          │          │          │   │          │          │    ,     │    .     │    /     │    F12   │
-           &kp F11       ___        ___        ___        ___        ___            ___        ___        ___        ___        ___     &kp F12
+        //│          │    F7    │    F8    │    F9    │    F10   │    F11   │   │    F12   │    1     │    2     │    3     │          │          │
+              ___     &kp F7     &kp F8     &kp F9     &kp F10    &kp F11        &kp F12    &kp N1     &kp N2     &kp N3        ___        ___
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
         //                                 │          │          │          │   │          │          │          │
                                                ___        ___        ___            ___        ___        ___
