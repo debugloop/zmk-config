@@ -57,5 +57,5 @@ steps:
           -H "accept: application/json" \
           -H 'Content-Type: application/json' \
           -H "Authorization: token $${CODEBERG_TOKEN}" \
-          -d '{ "Do": "merge", "merge_when_checks_succeed": true, "delete_branch_after_merge": true }' \
+          -d '{ "Do": "rebase", "merge_when_checks_succeed": true, "delete_branch_after_merge": true }' \
           ${CI_FORGE_URL}/api/v1/repos/${CI_REPO}/pulls/$${NUMBER}/merge
