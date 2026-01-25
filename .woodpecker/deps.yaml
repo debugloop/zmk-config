@@ -23,7 +23,8 @@ steps:
       - prepare
     commands:
       - nix flake update
-      - test -n "$(git status --porcelain)" && git commit -am "update flake inputs" || true
+      - test -n "$(git status --porcelain)" && exit 0
+      - git commit -am "update flake inputs"
 
   - name: update zmk dependencies
     image: bash
@@ -32,7 +33,8 @@ steps:
       - update flake inputs
     commands:
       - nix run .#update
-      - test -n "$(git status --porcelain)" && git commit -am "update zmk dependencies" || true
+      - test -n "$(git status --porcelain)" && exit 0
+      - git commit -am "update zmk dependencies"
 
   - name: push and create pr
     image: bash
@@ -43,7 +45,7 @@ steps:
       - update flake inputs
       - update zmk dependencies
     commands:
-      - test "${CI_COMMIT_SHA}" != "$(git rev-parse @)" || exit 0
+      - test "${CI_COMMIT_SHA}" = "$(git rev-parse @)" && exit 0
       - git push -f
       - >-
         NUMBER="$(curl -XPOST \
