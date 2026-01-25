@@ -8,4 +8,4 @@ steps:
     image: bash
     commands:
       - nix -vL --show-trace flake check
-      - nix -vL --show-trace build
+      - nix -vL --show-trace build .#flash
