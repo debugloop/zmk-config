@@ -67,4 +67,4 @@ steps:
     depends_on:
       - push and create pr
     commands:
-      - test "$(curl -s https://api.github.com/repos/zmkfirmware/zmk/releases/latest | jq .name)" = "v0.3.0" || exit 1
+      - test "$(curl -s https://api.github.com/repos/zmkfirmware/zmk/releases/latest | jq -r .name)" = "v0.3.0" || exit 1
