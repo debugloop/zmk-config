@@ -48,7 +48,7 @@
         # parts = ["left" "right"];
         # parts = ["dongle"];
 
-        zephyrDepsHash = "";
+        zephyrDepsHash = "sha256-0ni/3FJJizCqvp0X2tmwu29eWVqgd3hRXGOjtW6OiUE=";
 
         meta = {
           description = "ZMK firmware";
