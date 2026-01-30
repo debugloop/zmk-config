@@ -42,35 +42,6 @@
 
 / {
     behaviors {
-        lts: layer_tap_spc {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&mo>, <&spc_morph>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <QUICK_TAP_MS>;
-        };
-        ltr: layer_tap_repeat {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&mo>, <&key_repeat>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <QUICK_TAP_MS>;
-        };
-        spc_morph: space_morph {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT | MOD_RSFT)>;
-            bindings = <&kp SPACE>, <&dot_spc>;
-        };
-        dot_spc: dot_space {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp DOT &kp SPACE &skq LSHFT>;
-            wait-ms = <0>;
-            tap-ms = <5>;
-        };
         comma: comma_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -89,6 +60,15 @@
             mods = <(MOD_LSFT | MOD_RSFT)>;
             bindings = <&kp SLASH>, <&kp BSLH>;
         };
+        skq: sticky_key_quick {
+            compatible = "zmk,behavior-sticky-key";
+            bindings = <&kp>;
+            #binding-cells = <1>;
+            quick-release; // release after the next key is pressed, not released
+            release-after-ms = <1000>;
+        };
+
+        // hl and hr reuse the same settings, just hold-trigger-key-positions are different
         hl: home_row_mod_l {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -111,27 +91,42 @@
             hold-trigger-on-release;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
         };
-        repdel: repeat_delete {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <240>;
-            bindings = <&key_repeat>, <&kp BSPC>;
+        // regular thumb layer switch
+        tl: thumb_layer {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <KEYS_L KEYS_R>;
         };
-        leader: leader {
-            compatible = "zmk,behavior-leader-key";
-            #binding-cells = <0>;
-            ignore-keys = <LSHFT RSHFT>;
-            leader_sequence_nvim_qa {
-                bindings = <&kp COLON>;
-                sequence = <A>;
-            };
+        // tls is a special thumb layer version that includes capital space to end a sentence and has alpha-like hrm
+        // timings too
+        tls: thumb_layer_spc {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&spc_morph>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            require-prior-idle-ms = <100>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <KEYS_L KEYS_R>;
         };
-        skq: sticky_key_quick {
-            compatible = "zmk,behavior-sticky-key";
-            bindings = <&kp>;
-            #binding-cells = <1>;
-            quick-release;
-            release-after-ms = <1000>;
+        dot_spc: dot_space {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOT &kp SPACE &skq LSHFT>;
+            wait-ms = <0>;
+            tap-ms = <5>;
+        };
+        spc_morph: space_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT | MOD_RSFT)>;
+            bindings = <&kp SPACE>, <&dot_spc>;
         };
     };
 
@@ -207,7 +202,7 @@
            &hl H5 Q   &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &comma     &dot       &kp SLASH  &hr H5 F20
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
         //                                 │  REPEAT  │ NUM/ESC  │SYM/SPACE │   │NAV/ENTER │  SHIFT   │BACKSPACE │
-                                           &key_repeat &lt NUM ESC &lts SYM 0    &lt NAV RET &skq LSHFT &kp BSPC
+                                           &key_repeat &lt NUM ESC &tls SYM 0    &tl NAV RET &skq LSHFT &kp BSPC
         //                                 └──────────┴──────────┴──────────┘   └──────────┴──────────┴──────────┘
             >;
         };
