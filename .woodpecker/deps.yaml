@@ -1,6 +1,6 @@
 when:
   - event: cron
-    cron: nightly_update
+    cron: weekly_update
   - event: manual
 
 steps:
