@@ -18,10 +18,11 @@
 #include <behaviors/battery_percentage_printer.dtsi>
 
 #define COLEMAK 0
-#define SYM 1
-#define NUM 2
-#define NAV 3
-#define MOUSE 4
+#define VALMAK 1
+#define SYM 2
+#define NUM 3
+#define NAV 4
+#define MOUSE 5
 
 #define XXX &none
 #define ___ &trans
@@ -184,6 +185,12 @@
         /*     key-positions = <11 12>; */
         /*     bindings = <&kp ESC>; */
         /* }; */
+        combo_toggle_valmak {
+            timeout-ms = <50>;
+            key-positions = <20 31>;
+            bindings = <&tog VALMAK>;
+            layers = <0 1 2 3 4 5>;
+        };
     };
 
     conditional_layers {
@@ -207,11 +214,30 @@
         //           │    A     │    R     │    S     │    T     │    G     │   │    M     │    N     │    E     │    I     │    O     │
                      HRML(A,         R,         S,         T)     &kp G          &kp M     HRMR(N,         E,         I,         O)
         //┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐
-        //│    Q     │    Z     │    X     │    C     │    D     │    V     │   │    K     │    H     │   , ;    │   . ?    │    /     │   MIC    │
-           &hl H5 Q   &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &comma     &dot       &kp SLASH  &hr H5 F20
+        //│    Q     │    Z     │    X     │    C     │    D     │    V     │   │    K     │    H     │   , ;    │   . ?    │   / \    │   MIC    │
+           &hl H5 Q   &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &comma     &dot       &slash     &hr H5 F20
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
         //                                 │  REPEAT  │ NUM/ESC  │SYM/SPACE │   │NAV/ENTER │  SHIFT   │BACKSPACE │
                                            &key_repeat &lt NUM ESC &tls SYM 0    &tr NAV RET &skq LSHFT &kp BSPC
+        //                                 └──────────┴──────────┴──────────┘   └──────────┴──────────┴──────────┘
+            >;
+        };
+
+        VALMAK {
+            display-name = "VALMAK";
+            bindings = <
+        //           ┌──────────┬──────────┬──────────┬──────────┬──────────┐   ┌──────────┬──────────┬──────────┬──────────┬──────────┐
+        //           │    Q     │    W     │    F     │    P     │    B     │   │    -     │    U     │    O     │    Y     │    J     │
+                      &kp Q      &kp W      &kp F      &kp P      &kp B          &kp MINUS  &kp U      &kp O      &kp Y      &kp J
+        //           ├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //           │    N     │    L     │    S     │    T     │    G     │   │    '     │    E     │    A     │    I     │    H     │
+                     HRML(N,         L,         S,         T)     &kp G          &kp SQT   HRMR(E,         A,         I,         H)
+        //┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐
+        //│    X     │    Z     │    M     │    C     │    D     │    V     │   │    TAB   │  ENTER   │   , ;    │   . ?    │    / \   │    K     │
+           &kp X      &kp Z      &kp M      &kp C      &kp D      &kp V          &kp TAB    &kp RET    &comma     &dot       &slash    &kp K
+        //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
+        //                                 │ MICMUTE  │ NUM/ESC  │SYM/SPACE │   │  NAV/R   │  SHIFT   │BACKSPACE │
+                                            &kp F20    &lt NUM ESC &tls SYM 0    &tr NAV R  &skq LSHFT &kp BSPC
         //                                 └──────────┴──────────┴──────────┘   └──────────┴──────────┴──────────┘
             >;
         };
