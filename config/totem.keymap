@@ -227,14 +227,14 @@
             display-name = "VALMAK";
             bindings = <
         //           ┌──────────┬──────────┬──────────┬──────────┬──────────┐   ┌──────────┬──────────┬──────────┬──────────┬──────────┐
-        //           │    Q     │    W     │    F     │    P     │    B     │   │    -     │    U     │    O     │    Y     │    J     │
-                      &kp Q      &kp W      &kp F      &kp P      &kp B          &kp MINUS  &kp U      &kp O      &kp Y      &kp J
+        //           │    Q     │    W     │    F     │    P     │    B     │   │    TAB   │    U     │    O     │    Y     │    J     │
+                      &kp Q      &kp W      &kp F      &kp P      &kp B          &kp TAB    &kp U      &kp O      &kp Y      &kp J
         //           ├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //           │    N     │    L     │    S     │    T     │    G     │   │    '     │    E     │    A     │    I     │    H     │
-                     HRML(N,         L,         S,         T)     &kp G          &kp SQT   HRMR(E,         A,         I,         H)
+        //           │    N     │    L     │    S     │    T     │    G     │   │  ENTER   │    E     │    A     │    I     │    H     │
+                     HRML(N,         L,         S,         T)     &kp G          &kp RET   HRMR(E,         A,         I,         H)
         //┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐
-        //│    X     │    Z     │    M     │    C     │    D     │    V     │   │    TAB   │  ENTER   │   , ;    │   . ?    │    / \   │    K     │
-           &kp X      &kp Z      &kp M      &kp C      &kp D      &kp V          &kp TAB    &kp RET    &comma     &dot       &slash    &kp K
+        //│    X     │    Z     │    M     │    C     │    D     │    V     │   │    '     │    -     │   , ;    │   . ?    │    / \   │    K     │
+           &kp X      &kp Z      &kp M      &kp C      &kp D      &kp V          &kp SQT    &kp MINUS  &comma     &dot       &slash    &kp K
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
         //                                 │ MICMUTE  │ NUM/ESC  │SYM/SPACE │   │  NAV/R   │  SHIFT   │BACKSPACE │
                                             &kp F20    &lt NUM ESC &tls SYM 0    &tr NAV R  &skq LSHFT &kp BSPC
