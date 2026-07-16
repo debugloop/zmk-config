@@ -113,6 +113,16 @@
             quick-tap-ms = <QUICK_TAP_MS>;
             hold-trigger-key-positions = <KEYS_L KEYS_R THUMBS_L>;
         };
+        trr: thumb_layer_alpha_r {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            require-prior-idle-ms = <100>;
+            hold-trigger-key-positions = <KEYS_L KEYS_R THUMBS_L>;
+        };
         // tls is a special thumb layer version that includes capital space to end a sentence and has alpha-like hrm
         // timings too
         tls: thumb_layer_spc {
@@ -237,7 +247,7 @@
            &kp X      &kp Z      &kp M      &kp C      &kp D      &kp V          &kp SQT    &kp MINUS  &comma     &dot       &slash    &kp K
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
         //                                 │ MICMUTE  │ NUM/ESC  │SYM/SPACE │   │  NAV/R   │  SHIFT   │BACKSPACE │
-                                            &kp F20    &lt NUM ESC &tls SYM 0    &tr NAV R  &skq LSHFT &kp BSPC
+                                            &kp F20    &lt NUM ESC &tls SYM 0    &trr NAV R  &skq LSHFT &kp BSPC
         //                                 └──────────┴──────────┴──────────┘   └──────────┴──────────┴──────────┘
             >;
         };
