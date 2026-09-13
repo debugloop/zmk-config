@@ -13,13 +13,13 @@ manifest:
       import: app/west.yml
     - name: zmk-adaptive-key
       remote: urob
-      revision: e5b335a7b1076cb122582f5a892b118b02a3be34 # main
+      revision: e987227d625e8863343baf16bd11ff90310482a5 # main
     - name: zmk-leader-key
       remote: urob
-      revision: e894d9afa5164b7fff641db4194fc3d4d6e84bbb # main
+      revision: 4745294d5f2bc12bbdf91471dd85bfbdbb35c47d # main
     - name: zmk-auto-layer
       remote: urob
-      revision: 62c201934711369d50a28df12e1d055d05cb6460 # main
+      revision: b50d514219c5ad61198f9a8be137c59d0674b11c # main
     - name: zmk-behavior-battery-percentage-printer
       remote: badjeff
       revision: e111cbc6ac66caaa157daeb58eda3c8e2b43153a # main
