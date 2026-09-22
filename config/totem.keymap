@@ -17,12 +17,11 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <behaviors/battery_percentage_printer.dtsi>
 
-#define COLEMAK 0
-#define VALMAK 1
-#define SYM 2
-#define NUM 3
-#define NAV 4
-#define MOUSE 5
+#define VALMAK 0
+#define SYM 1
+#define NUM 2
+#define NAV 3
+#define MOUSE 4
 
 #define XXX &none
 #define ___ &trans
@@ -214,25 +213,6 @@
     keymap {
         compatible = "zmk,keymap";
 
-        COLEMAK {
-            display-name = "COLEMAK";
-            bindings = <
-        //           ┌──────────┬──────────┬──────────┬──────────┬──────────┐   ┌──────────┬──────────┬──────────┬──────────┬──────────┐
-        //           │    Q     │    W     │    F     │    P     │    B     │   │    J     │    L     │    U     │    Y     │   TAB    │
-                      &kp Q      &kp W      &kp F      &kp P      &kp B          &kp J      &kp L      &kp U      &kp Y      &kp TAB
-        //           ├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //           │    A     │    R     │    S     │    T     │    G     │   │    M     │    N     │    E     │    I     │    O     │
-                     HRML(A,         R,         S,         T)     &kp G          &kp M     HRMR(N,         E,         I,         O)
-        //┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐
-        //│    Q     │    Z     │    X     │    C     │    D     │    V     │   │    K     │    H     │   , ;    │   . ?    │   / \    │   MIC    │
-           &hl H5 Q   &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &comma     &dot       &slash     &hr H5 F20
-        //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
-        //                                 │  REPEAT  │ NUM/ESC  │SYM/SPACE │   │NAV/ENTER │  SHIFT   │BACKSPACE │
-                                           &key_repeat &lt NUM ESC &tls SYM 0    &tr NAV RET &skq LSHFT &kp BSPC
-        //                                 └──────────┴──────────┴──────────┘   └──────────┴──────────┴──────────┘
-            >;
-        };
-
         VALMAK {
             display-name = "VALMAK";
             bindings = <
@@ -246,8 +226,8 @@
         //│    X     │    Z     │    M     │    C     │    D     │    V     │   │    -     │    '     │   , ;    │   . ?    │    / \   │    K     │
            &kp X      &kp Z      &kp M      &kp C      &kp D      &kp V          &kp MINUS  &kp SQT    &comma     &dot       &slash    &kp K
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
-        //                                 │ MICMUTE  │ NUM/ESC  │SYM/SPACE │   │  NAV/R   │  SHIFT   │BACKSPACE │
-                                            &kp F20    &lt NUM ESC &tls SYM 0    &trr NAV R  &skq LSHFT &kp BSPC
+        //                                 │TRANS/MIC │ NUM/ESC  │SYM/SPACE │   │  NAV/R   │  SHIFT   │BACKSPACE │
+                                           &hl F13 F20 &lt NUM ESC &tls SYM 0    &trr NAV R  &skq LSHFT &kp BSPC
         //                                 └──────────┴──────────┴──────────┘   └──────────┴──────────┴──────────┘
             >;
         };
