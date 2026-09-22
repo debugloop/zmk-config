@@ -60,7 +60,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             mods = <(MOD_LSFT | MOD_RSFT)>;
-            bindings = <&kp SLASH>, <&kp BSLH>;
+            bindings = <&kp SLASH>, <&kp EXCL>;
         };
         skq: sticky_key_quick {
             compatible = "zmk,behavior-sticky-key";
@@ -223,7 +223,7 @@
         //           │    N     │    L     │    S     │    T     │    G     │   │  ENTER   │    E     │    A     │    I     │    H     │
                      HRML(N,         L,         S,         T)     &kp G          &kp RET   HRMR(E,         A,         I,         H)
         //┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐
-        //│    X     │    Z     │    M     │    C     │    D     │    V     │   │    -     │    '     │   , ;    │   . ?    │    / \   │    K     │
+        //│    X     │    Z     │    M     │    C     │    D     │    V     │   │    -     │    '     │   , ;    │   . ?    │    / !   │    K     │
            &kp X      &kp Z      &kp M      &kp C      &kp D      &kp V          &kp MINUS  &kp SQT    &comma     &dot       &slash    &kp K
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
         //                                 │TRANS/MIC │ NUM/ESC  │SYM/SPACE │   │  NAV/R   │  SHIFT   │BACKSPACE │
@@ -239,14 +239,14 @@
         //           │          │    @     │    #     │    $     │    %     │   │    ^     │    {     │    _     │    }     │          │
                          ___     &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp CARET  &kp LBRC   &kp UNDER  &kp RBRC      ___
         //           ├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //           │    &     │    (     │    :     │    )     │    *     │   │    "     │    [     │    '     │    ]     │    `     │
-                      &kp AMPS   &kp LPAR   &kp COLON  &kp RPAR   &kp ASTRK      &kp DQT    &kp LBKT   &kp SQT    &kp RBKT   &kp GRAVE
+        //           │    &     │    (     │    :     │    )     │    *     │   │    "     │    [     │    `     │    ]     │    '     │
+                      &kp AMPS   &kp LPAR   &kp COLON  &kp RPAR   &kp ASTRK      &kp DQT    &kp LBKT   &kp GRAVE  &kp RBKT   &kp SQT
         //┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐
-        //│          │          │    <     │    ~     │    >     │    |     │   │    !     │    -     │    =     │    +     │    \     │          │
-              ___        ___     &kp LT     &kp TILDE  &kp GT     &kp PIPE       &kp EXCL   &kp MINUS  &kp EQUAL  &kp PLUS   &kp BSLH      ___
+        //│          │          │    <     │    ~     │    >     │    |     │   │    €     │    -     │    =     │    +     │    \     │          │
+              ___        ___     &kp LT     &kp TILDE  &kp GT     &kp PIPE       &kp RA(N5) &kp MINUS  &kp EQUAL  &kp PLUS   &kp BSLH      ___
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
-        //                                 │          │          │          │   │          │  caps    │  DELETE  │
-                                               ___        ___        ___            ___     &caps_word &kp DEL
+        //                                 │          │          │          │   │ NAV/COMP │  caps    │  DELETE  │
+                                               ___        ___        ___      &tr NAV RCTRL &caps_word &kp DEL
         //                                 └──────────┴──────────┴──────────┘   └──────────┴──────────┴──────────┘
             >;
         };
@@ -299,8 +299,8 @@
         //           │          │          │          │          │          │   │    ⮜     │    ⮟     │    ⮝     │    ⮞     │ vol mute │
                          ___        ___        ___        ___        ___         &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp C_MUTE
         //┌──────────┼──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┼──────────┐
-        //│          │          │          │          │          │          │   │   RALT   │    ⮪     │    ⮫     │          │    🕩     │   META   │
-           &kp PSCRN     ___        ___        ___        ___        ___         &sk RALT    &kp HOME   &kp END   &kp K_PASTE &kp C_VOL_DN &kp LGUI
+        //│          │          │          │          │          │          │   │  S-HOME  │    ⮪     │    ⮫     │  S-END   │    🕩     │   RALT   │
+           &kp PSCRN     ___        ___        ___        ___        ___       &kp LS(HOME)  &kp HOME   &kp END   &kp LS(END) &kp C_VOL_DN &sk RALT
         //└──────────┴──────────┴──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┴──────────┴──────────┘
         //                                 │          │          │          │   │          │    ⏵     │    ⏭     │
                                                ___        ___        ___            ___     &kp C_PP   &kp C_NEXT
